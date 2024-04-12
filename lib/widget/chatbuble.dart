@@ -32,10 +32,10 @@ class _ChatBubbleFriendState extends State<ChatBubbleFriend> {
             });
       },
       child: Align(
-        alignment: Alignment.centerLeft,
+        alignment: Alignment.centerRight,
         child: Container(
           margin: const EdgeInsets.only(left: 16, top: 16, right: 24),
-          padding: const EdgeInsets.all(32),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: _isColored
                 ? Colors.orange
@@ -46,9 +46,22 @@ class _ChatBubbleFriendState extends State<ChatBubbleFriend> {
               bottomLeft: Radius.circular(30),
             ),
           ),
-          child: Text(
-            widget.messageList.text,
-            style: const TextStyle(color: Colors.white),
+          child: Column(
+               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+                Text(
+                widget.messageList.email,
+                style: const TextStyle(color: Colors.white),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 18),
+                child: Text(
+                  widget.messageList.text,
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -87,25 +100,37 @@ class _ChatBubbleState extends State<ChatBubble> {
       },
       child: Align(
         alignment: Alignment.centerLeft,
-        child: Container(
-          margin: const EdgeInsets.only(left: 16, top: 16, right: 24),
-          padding: const EdgeInsets.all(32),
-          decoration: BoxDecoration(
-            color: _isColored
-                ? Colors.orange
-                : Colors.green, // Use the state variable here
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
-              bottomRight: Radius.circular(30),
+        
+          child: Container(
+            margin: const EdgeInsets.only(left: 16, top: 16, right: 24),
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: _isColored
+                  ? Colors.orange
+                  : Colors.green, // Use the state variable here
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                 Text(widget.messageList.email,style: TextStyle(color: Colors.white),),
+                Padding(
+                  padding: const EdgeInsets.only(top: 18),
+                  child: Text(
+                    widget.messageList.text,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
             ),
           ),
-          child: Text(
-            widget.messageList.text,
-            style: const TextStyle(color: Colors.white),
-          ),
         ),
-      ),
+      
     );
   }
 }
