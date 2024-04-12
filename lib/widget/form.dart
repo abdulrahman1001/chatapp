@@ -32,7 +32,8 @@ class FormAuth extends StatelessWidget {
         listener: (context, state) {
           if (state is AuthLoading) {
           } else if (state is AuthSuccess) {
-            Navigator.pushNamed(context, '/c');
+
+            Navigator.pushNamed(context, '/c',arguments: email);
           } else if (state is AuthError) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.error)),
